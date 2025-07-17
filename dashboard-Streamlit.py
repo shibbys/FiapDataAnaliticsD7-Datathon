@@ -8,20 +8,27 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 MODO_LOCAL = 0  # 1 = local, 0 = cloud/demo
 
+#########################################################
+if MODO_LOCAL:
+    modelo_path = 'modelo_rf.pkl'
+    features_path = 'features.pkl'
+    threshold_path = 'threshold.txt'
+    importances_path = 'importances.pkl'
+    applicants_path = 'applicants.json'
+    vagas_path = 'vagas.json'
+    prospects_path = 'prospects.json'
+else:
+    modelo_path = 'modelo_rf_light.pkl'
+    features_path = 'features_light.pkl'
+    threshold_path = 'threshold.txt'
+    importances_path = 'importances_light.pkl'
+    applicants_path = 'applicants_sample.json'
+    vagas_path = 'vagas_sample.json'
+    prospects_path = 'prospects.json'
+
 # Carregar as coisas
 @st.cache_resource
-def load_artifacts(MODO_LOCAL):
-    if MODO_LOCAL:
-        modelo_path = 'modelo_rf.pkl'
-        features_path = 'features.pkl'
-        threshold_path = 'threshold.txt'
-        importances_path = 'importances.pkl'
-    else:
-        modelo_path = 'modelo_rf_light.pkl'
-        features_path = 'features_light.pkl'
-        threshold_path = 'threshold.txt'
-        importances_path = 'importances_light.pkl'
-    
+def load_artifacts():
     clf = joblib.load(modelo_path)
     with open(features_path, 'rb') as f:
         features = pickle.load(f)
@@ -31,7 +38,7 @@ def load_artifacts(MODO_LOCAL):
         importances = pickle.load(f)
     return clf, features, threshold, importances
 
-clf, features, threshold, importances = load_artifacts(MODO_LOCAL)
+clf, features, threshold, importances = load_artifacts()
 
 @st.cache_resource
 def load_embedding_model():
@@ -39,11 +46,11 @@ def load_embedding_model():
 embedding_model = load_embedding_model()
 
 # Carregar bases (pré-carregadas no app)
-with open('vagas.json', 'r', encoding='utf-8') as f:
+with open(vagas_path, 'r', encoding='utf-8') as f:
     vagas_data = json.load(f)
-with open('applicants.json', 'r', encoding='utf-8') as f:
+with open(applicants_path, 'r', encoding='utf-8') as f:
     applicants_data = json.load(f)
-with open('prospects.json', 'r', encoding='utf-8') as f:
+with open(prospects_path, 'r', encoding='utf-8') as f:
     prospects_data = json.load(f)
 
 def calcular_similaridade_bin(cv, desc_vaga):
