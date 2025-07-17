@@ -6,18 +6,32 @@ import json
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
+MODO_LOCAL = 0  # 1 = local, 0 = cloud/demo
+
 # Carregar as coisas
 @st.cache_resource
-def load_artifacts():
-    clf = joblib.load('modelo_rf.pkl')
-    with open('features.pkl', 'rb') as f:
+def load_artifacts(MODO_LOCAL):
+    if MODO_LOCAL:
+        modelo_path = 'modelo_rf.pkl'
+        features_path = 'features.pkl'
+        threshold_path = 'threshold.txt'
+        importances_path = 'importances.pkl'
+    else:
+        modelo_path = 'modelo_rf_light.pkl'
+        features_path = 'features_light.pkl'
+        threshold_path = 'threshold_light.txt'
+        importances_path = 'importances_light.pkl'
+    
+    clf = joblib.load(modelo_path)
+    with open(features_path, 'rb') as f:
         features = pickle.load(f)
-    with open('threshold.txt', 'r') as f:
+    with open(threshold_path, 'r') as f:
         threshold = float(f.read())
-    with open('importances.pkl', 'rb') as f:
+    with open(importances_path, 'rb') as f:
         importances = pickle.load(f)
     return clf, features, threshold, importances
-clf, features, threshold, importances = load_artifacts()
+
+clf, features, threshold, importances = load_artifacts(MODO_LOCAL)
 
 @st.cache_resource
 def load_embedding_model():
