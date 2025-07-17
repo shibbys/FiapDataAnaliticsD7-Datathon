@@ -25,11 +25,11 @@ def load_embedding_model():
 embedding_model = load_embedding_model()
 
 # Carregar bases (pré-carregadas no app)
-with open('amostra_vagas.json', 'r', encoding='utf-8') as f:
+with open('vagas.json', 'r', encoding='utf-8') as f:
     vagas_data = json.load(f)
-with open('amostra_applicants.json', 'r', encoding='utf-8') as f:
+with open('applicants.json', 'r', encoding='utf-8') as f:
     applicants_data = json.load(f)
-with open('amostra_prospects.json', 'r', encoding='utf-8') as f:
+with open('prospects.json', 'r', encoding='utf-8') as f:
     prospects_data = json.load(f)
 
 def calcular_similaridade_bin(cv, desc_vaga):

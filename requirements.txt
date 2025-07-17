@@ -2,3 +2,7 @@ streamlit
 pandas
 scikit-learn
 joblib
+sentence-transformers
+transformers
+langid
+joblib
