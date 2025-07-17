@@ -19,7 +19,7 @@ def load_artifacts(MODO_LOCAL):
     else:
         modelo_path = 'modelo_rf_light.pkl'
         features_path = 'features_light.pkl'
-        threshold_path = 'threshold_light.txt'
+        threshold_path = 'threshold.txt'
         importances_path = 'importances_light.pkl'
     
     clf = joblib.load(modelo_path)
