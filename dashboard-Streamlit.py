@@ -10,21 +10,21 @@ MODO_LOCAL = 0  # 1 = local, 0 = cloud/demo
 
 #########################################################
 if MODO_LOCAL:
-    modelo_path = 'modelo_rf.pkl'
-    features_path = 'features.pkl'
-    threshold_path = 'threshold.txt'
-    importances_path = 'importances.pkl'
-    applicants_path = 'applicants.json'
-    vagas_path = 'vagas.json'
-    prospects_path = 'prospects.json'
+    modelo_path = 'models/modelo_rf.pkl'
+    features_path = 'models/features.pkl'
+    threshold_path = 'models/threshold.txt'
+    importances_path = 'models/importances.pkl'
+    applicants_path = 'json/applicants.json'
+    vagas_path = 'json/vagas.json'
+    prospects_path = 'json/prospects.json'
 else:
-    modelo_path = 'modelo_rf_light.pkl'
-    features_path = 'features_light.pkl'
-    threshold_path = 'threshold.txt'
-    importances_path = 'importances_light.pkl'
-    applicants_path = 'applicants_sample.json'
-    vagas_path = 'vagas_sample.json'
-    prospects_path = 'prospects.json'
+    modelo_path = 'models/modelo_rf_light.pkl'
+    features_path = 'models/features_light.pkl'
+    threshold_path = 'models/threshold.txt'
+    importances_path = 'models/importances_light.pkl'
+    applicants_path = 'json/applicants_sample.json'
+    vagas_path = 'json/vagas_sample.json'
+    prospects_path = 'json/prospects.json'
 
 # Carregar as coisas
 @st.cache_resource
