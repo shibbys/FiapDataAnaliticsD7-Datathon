@@ -93,6 +93,42 @@ def predict_batch(df_feat):
     pred = (proba >= threshold).astype(int)
     return pred, proba
 
+df_template = pd.DataFrame([{
+    'cand_nivel_academico': 'Ensino Superior Completo',
+    'cand_area_atuacao': 'TI - BI/Analytics',
+    'cand_nivel_ingles': 'Avançado',
+    'cand_nivel_espanhol': 'Básico',
+    'cv_pt': 'Profissional certificado em Power BI, experiência com DAX, ETL e visualização de dados. Atuou em projetos financeiros e de RH.',
+    'cargo_atual': 'Analista de BI'
+},
+{
+    'cand_nivel_academico': 'Pós Graduação Completo',
+    'cand_area_atuacao': 'TI - Desenvolvimento/Programação',
+    'cand_nivel_ingles': 'Avançado',
+    'cand_nivel_espanhol': 'Nenhum',
+    'cv_pt': 'Desenvolvedor Python com experiência em APIs, automação e integração com Power BI. Foco em soluções de dados e painéis executivos.',
+    'cargo_atual': 'Desenvolvedor Python'
+
+},
+{
+    'cand_nivel_academico': 'Ensino Médio Completo',
+    'cand_area_atuacao': 'Administrativa',
+    'cand_nivel_ingles': 'Básico',
+    'cand_nivel_espanhol': 'Nenhum',
+    'cv_pt': 'Interesse em BI, conhecimento básico em Power BI, habilidades em Excel avançado e lógica de programação.',
+    'cargo_atual': 'Auxiliar Administrativo'
+
+},
+{
+    'cand_nivel_academico': 'Pós Graduação Completo',
+    'cand_area_atuacao': 'TI - SAP',
+    'cand_nivel_ingles': 'Intermediário',
+    'cand_nivel_espanhol': 'Básico',
+    'cv_pt': 'Consultor SAP FI, experiência com integrações de dados, projetos multinacionais e automações de relatórios.',
+    'cargo_atual': 'Consultor SAP FI'
+
+}])
+
 st.title("Recomendador de Contratação")
 
 # === 1. Seleção ou criação de vaga ===
@@ -155,10 +191,17 @@ if modo_candidato == 'Selecionar candidatos existentes':
     for cid in candidatos_escolhidos:
         candidatos_selecionados.append(applicants_data[cid])
 else:
-    st.info("Faça upload do CSV no modelo: cand_nivel_academico, cand_area_atuacao, cand_nivel_ingles, cand_nivel_espanhol, cv_pt, cargo_atual, etc.")
+    st.info("Faça upload do CSV")
+    csv = df_template.to_csv(index=False).encode('utf-8')
+    st.download_button(
+    label="Baixar template CSV de candidatos",
+    data=csv,
+    file_name='template_candidatos.csv',
+    mime='text/csv'
+)
     csv_file = st.file_uploader("Upload do arquivo CSV de candidatos", type='csv')
     if csv_file:
-        df_new = pd.read_csv(csv_file)
+        df_new = pd.read_csv(csv_file, encoding='utf-8', sep=',')
         # Transforma cada linha em dict (no formato esperado)
         for i, row in df_new.iterrows():
             cand = {
@@ -181,7 +224,7 @@ if candidatos_selecionados:
         "ID": idx if modo_candidato == 'Selecionar candidatos existentes' else f"Novo_{i+1}",
         "Nível Acadêmico": c.get('formacao_e_idiomas', {}).get('nivel_academico', ''),
         "Área de Atuação": c.get('informacoes_profissionais', {}).get('area_atuacao', ''),
-        "Cargo Atual": c.get('cargo_atual', {}).get('cargo_atual', ''),
+        "Cargo Atual": c.get('cargo_atual', '')
     } for i, c in enumerate(candidatos_selecionados) for idx in ([c.get('infos_basicas', {}).get('nome', '')] if modo_candidato == 'Selecionar candidatos existentes' else [f"Novo_{i+1}"])])
 
     st.dataframe(df_cands, hide_index=True)
@@ -256,7 +299,7 @@ if candidatos_selecionados:
             st.warning("Candidato não encontrado!")
             st.stop()
         # Monta tabela de detalhes principais do candidato
-        ver_json = st.toggle("Ver JSON bruto do candidato")  # Usa st.toggle (Streamlit >=1.25)
+        ver_json = st.toggle("Ver JSON bruto do candidato")
         if ver_json:
             st.json(cand)
         else:
@@ -276,7 +319,7 @@ if candidatos_selecionados:
                 "Nível Acadêmico": formacao.get('nivel_academico', ''),
                 "Nível Inglês": formacao.get('nivel_ingles', ''),
                 "Nível Espanhol": formacao.get('nivel_espanhol', ''),
-                "Cargo Atual": cargo.get('cargo_atual', '')
+                "Cargo Atual": cand.get('cargo_atual', '')
             }
 
             # Mostra os detalhes em tabela
