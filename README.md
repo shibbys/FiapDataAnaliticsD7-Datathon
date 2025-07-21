@@ -88,6 +88,7 @@ streamlit run dashboard-Streamlit.py
 ## 👨‍💻 Autores e Contato
 - Marlon J Fernandez (RM353490)
 - Roberto C Muller (RM353491)
+
 Dúvidas ou sugestões?
 
 Abra um Issue ou envie um e-mail para [marlon.shibby@gmail.com]
