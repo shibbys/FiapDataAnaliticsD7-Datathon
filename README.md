@@ -58,19 +58,19 @@ streamlit run dashboard-Streamlit.py
 ## 📁 Estrutura dos arquivos
 ```
 ├── json
-├──── applicants.json
-├──── applicants_sample.json
-├──── prospects.json
-├──── vagas.json
-├──── vagas_sample.json
+│ ├── applicants.json
+│ ├── applicants_sample.json
+│ ├── prospects.json
+│ ├── vagas.json
+│ ├── vagas_sample.json
 ├── models
-├──── features.pkl
-├──── features_light.pkl
-├──── importances.pkl
-├──── importances_light.pkl
-├──── modelo_rf.pkl
-├──── modelo_rf_light.pkl
-├──── threshold.txt
+│ ├── features.pkl
+│ ├── features_light.pkl
+│ ├── importances.pkl
+│ ├── importances_light.pkl
+│ ├── modelo_rf.pkl
+│ ├── modelo_rf_light.pkl
+│ ├── threshold.txt
 ├── Datathon-Grupo-13-DTAT7-Analise-treinamento-Decision.ipynb
 ├── README.md
 ├── dashboard-Streamlit.py
