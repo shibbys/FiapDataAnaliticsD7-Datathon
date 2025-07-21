@@ -58,8 +58,11 @@ streamlit run dashboard-Streamlit.py
 ## 📁 Estrutura dos arquivos
 
 ├── json
+
 ├──── applicants.json
+
 ├──── applicants_sample.json
+
 ├──── prospects.json
 ├──── vagas.json
 ├──── vagas_sample.json
@@ -94,4 +97,4 @@ Abra um Issue ou envie um e-mail para [marlon.shibby@gmail.com]
 
 ## 🏆 Créditos
 
-Projeto desenvolvido para o Datathon FIAP Data Analytics D7 – 2024/2025.
+Projeto desenvolvido para o Datathon FIAP Data Analytics – 2024/2025.
