@@ -56,13 +56,10 @@ streamlit run dashboard-Streamlit.py
 - Modelos leves (modelo_rf_light.pkl) e arquivos de amostra garantem performance e deploy no Streamlit Cloud.
 
 ## 📁 Estrutura dos arquivos
-
+```
 ├── json
-
 ├──── applicants.json
-
 ├──── applicants_sample.json
-
 ├──── prospects.json
 ├──── vagas.json
 ├──── vagas_sample.json
@@ -79,7 +76,7 @@ streamlit run dashboard-Streamlit.py
 ├── dashboard-Streamlit.py
 ├── requirements.txt
 └── ...
-
+```
 ## 📝 Observações
 
 - O app exibirá uma mensagem informando se está em modo local ou cloud.
