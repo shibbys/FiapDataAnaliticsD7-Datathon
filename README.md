@@ -26,5 +26,31 @@ Inclui análise exploratória, criação de modelos preditivos, engenharia de fe
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/Cavedoon/FiapDataAnaliticsD7-Datathon.git
+git clone https://github.com/shibbys/FiapDataAnaliticsD7-Datathon.git
 cd FiapDataAnaliticsD7-Datathon
+```
+### 2. Escolha o modo de execução
+
+No arquivo principal do app (`streamlit-Dashboard.py` ou `Datathon-Grupo-13-DTAT7-Analise-treinamento-Decision.ipynb`), defina no topo:
+
+```python
+MODO_LOCAL = 1  # Para rodar localmente com a base/modelo completo
+MODO_LOCAL = 0  # Para rodar online (Streamlit Cloud) com amostras/modelo leve
+
+```
+### 3. Instale as dependências
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Rode o app localmente
+```bash
+streamlit run dashboard-Streamlit.py
+```
+## ⚡️ Sobre os dados e modelos
+
+- O projeto utiliza arquivos de base completos e amostras reduzidas (*_sample.json) para ambientes cloud.
+
+- Para rodar localmente com o pipeline completo, baixe os arquivos completos conforme instruções (links fornecidos separadamente, ex: Google Drive).
+
+- Modelos leves (modelo_rf_light.pkl) e arquivos de amostra garantem performance e deploy no Streamlit Cloud.
