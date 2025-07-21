@@ -51,6 +51,47 @@ streamlit run dashboard-Streamlit.py
 
 - O projeto utiliza arquivos de base completos e amostras reduzidas (*_sample.json) para ambientes cloud.
 
-- Para rodar localmente com o pipeline completo, baixe os arquivos completos conforme instruções (links fornecidos separadamente, ex: Google Drive).
+- Para rodar localmente com o pipeline completo, hospedados aqui utilizando LFS.
 
 - Modelos leves (modelo_rf_light.pkl) e arquivos de amostra garantem performance e deploy no Streamlit Cloud.
+
+## 📁 Estrutura dos arquivos
+
+├── json
+├──── applicants.json
+├──── applicants_sample.json
+├──── prospects.json
+├──── vagas.json
+├──── vagas_sample.json
+├── models
+├──── features.pkl
+├──── features_light.pkl
+├──── importances.pkl
+├──── importances_light.pkl
+├──── modelo_rf.pkl
+├──── modelo_rf_light.pkl
+├──── threshold.txt
+├── Datathon-Grupo-13-DTAT7-Analise-treinamento-Decision.ipynb
+├── README.md
+├── dashboard-Streamlit.py
+├── requirements.txt
+└── ...
+
+## 📝 Observações
+
+- O app exibirá uma mensagem informando se está em modo local ou cloud.
+
+- No modo cloud, carregue apenas arquivos pequenos/sample.
+
+- Para datasets completos, use localmente e baixe os arquivos conforme instruções.
+
+## 👨‍💻 Autores e Contato
+- Marlon J Fernandez (RM353490)
+- Roberto C Muller (RM353491)
+Dúvidas ou sugestões?
+
+Abra um Issue ou envie um e-mail para [marlon.shibby@gmail.com]
+
+## 🏆 Créditos
+
+Projeto desenvolvido para o Datathon FIAP Data Analytics D7 – 2024/2025.
