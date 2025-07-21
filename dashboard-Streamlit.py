@@ -244,7 +244,7 @@ if candidatos_selecionados:
 
         # Adiciona resultados ao DataFrame para exibir
         df_results['Probabilidade (%)'] = (proba * 100).round(1)
-        df_results['Aprovado'] = ['Sim' if p == 1 else 'Não' for p in pred]
+        df_results['Aprovado'] = df_results['Probabilidade (%)'].apply(lambda x: 'Sim' if x >= 20 else 'Não')
         df_results['ID'] = df_results['display_id']
 
         # Ranking: ordenar pela probabilidade decrescente
