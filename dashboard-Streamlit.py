@@ -159,7 +159,7 @@ st.sidebar.markdown(
         <p style="color: #212529; margin: 0;">
             A análise completa e o treinamento do modelo de decisão estão disponíveis no GitHub.
         </p>
-        <a href="https://github.com/shibbys/FiapDataAnaliticsD7-Datathon/blob/main/README.md" target="_blank" rel="noopener noreferrer" style="color: #0B5ED7; font-weight: bold; text-decoration: none;">
+        <a href="https://github.com/shibbys/FiapDataAnaliticsD7-Datathon/" target="_blank" rel="noopener noreferrer" style="color: #0B5ED7; font-weight: bold; text-decoration: none;">
             ➡️ Acessar Notebook
         </a>
     </div>
@@ -405,3 +405,13 @@ with coluna2:
     else:
         st.info("Selecione pelo menos um candidato ou faça upload do CSV.")
 
+st.title(":+1: Recomendações e próximos passos")
+
+st.markdown(
+"""
+Para uma melhor performance de um modelo de matching sem contar exclusivamente com a análise do CV com NLP de alto consumo de recursos, seria importante para a empresa considerar alguns pontos de melhoria no processo, como:
+- Ajustar o sistema para receber as informações do candidato em campos definidos e obrigatórios para evitar a dispersão de dados e falta de padronização
+- Identificar ainda no processo de coleta de dados o idioma do CV e ajustar de acordo, tendo o processamento da tradução (se desejável) já na etapa de coleta e armazenamento para menor uso de recursos no momento de treinamento
+- Adicionar informações pós-entrevista dos candidatos pós-entrevista como fit cultural, pontos de alerta ou algo relevante ao processo de avaliação
+"""
+)
