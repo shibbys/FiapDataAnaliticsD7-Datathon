@@ -5,7 +5,6 @@ import pickle
 import json
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-import matplotlib.pyplot as plt
 
 MODO_LOCAL = 0  # 1 = local, 0 = cloud/demo
 
